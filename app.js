@@ -127,7 +127,7 @@ function startGame() {
         enemyCar.setAttribute("class", "enemyCar");
         enemyCar.y = (i + 1) * 350 * -1;
         enemyCar.style.top = enemyCar.y + "px";
-        enemyCar.style.backgroundImage = `url("./images/car${i + 1}.png")`;
+        enemyCar.style.backgroundImage = `url("car${i + 1}.png")`;
         enemyCar.style.left = Math.floor(Math.random() * 350) + "px";
         gameArea.appendChild(enemyCar);
     }
