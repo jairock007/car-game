@@ -8,7 +8,7 @@
 .carGame {
     width: 100vw;
     height: 100vh;
-    background: url("./images/bg_image.png");
+    background: url("bg_image.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -58,7 +58,7 @@
 .enemyCar {
     width: 40px;
     height: 70px;
-    background-image: url("./images/car4.png");
+    background-image: url("car4.png");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
