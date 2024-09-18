@@ -85,4 +85,62 @@
     position: absolute;
     left: calc(50% - 12px);
 }
+@media (max-width: 768px) {
+    .startScreen {
+        width: 80%;
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 
+    .score {
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    .car,
+    .enemyCar {
+        width: 30px;
+        height: 55px;
+    }
+
+    .gameArea {
+        width: 95%;
+        border-right-width: 5px;
+        border-left-width: 5px;
+    }
+
+    .line {
+        width: 8px;
+        left: calc(50% - 4px);
+    }
+}
+
+@media (max-width: 480px) {
+    .startScreen {
+        width: 90%;
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .score {
+        font-size: 0.9rem;
+        padding: 6px;
+    }
+
+    .car,
+    .enemyCar {
+        width: 25px;
+        height: 45px;
+    }
+
+    .gameArea {
+        width: 100%;
+        border-right-width: 3px;
+        border-left-width: 3px;
+    }
+
+    .line {
+        width: 6px;
+        left: calc(50% - 3px);
+    }
+}
