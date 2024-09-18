@@ -19,7 +19,7 @@ let keys = {
 };
 
 // Add tilt controls
-let tiltThreshold = 10; // Adjust this value to change sensitivity
+let tiltThreshold = 7; // Adjust this value to change sensitivity
 let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 if (isMobile) {
