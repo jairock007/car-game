@@ -18,10 +18,34 @@ let keys = {
     ArrowRight: false,
 };
 
+// Add tilt controls
+let tiltThreshold = 2; // Adjust this value to change sensitivity
+let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+if (isMobile) {
+    window.addEventListener("deviceorientation", handleOrientation);
+}
+
+function handleOrientation(event) {
+    let tilt = event.gamma; // Get the left-to-right tilt in degrees
+
+    if (tilt < -tiltThreshold) {
+        keys.ArrowLeft = true;
+        keys.ArrowRight = false;
+    } else if (tilt > tiltThreshold) {
+        keys.ArrowRight = true;
+        keys.ArrowLeft = false;
+    } else {
+        keys.ArrowLeft = false;
+        keys.ArrowRight = false;
+    }
+}
+
 function keyDown(e) {
     e.preventDefault();
     keys[e.key] = true;
 }
+
 function keyUp(e) {
     e.preventDefault();
     keys[e.key] = false;
@@ -30,11 +54,9 @@ function keyUp(e) {
 function gamePlay() {
     let car = document.querySelector(".car");
     let road = gameArea.getBoundingClientRect();
-
     if (player.start) {
         moveLines();
         moveEnemyCar(car);
-
         if (keys.ArrowUp && player.y > road.top + 150) {
             player.y -= player.speed;
         }
@@ -47,17 +69,14 @@ function gamePlay() {
         if (keys.ArrowRight && player.x < road.width - 70) {
             player.x += player.speed;
         }
-
         car.style.top = `${player.y}px`;
         car.style.left = `${player.x}px`;
-
         window.requestAnimationFrame(gamePlay);
-
         player.score++;
-
         score.innerHTML = "Score: " + player.score;
     }
 }
+
 function moveLines() {
     let lines = document.querySelectorAll(".line");
     lines.forEach((line, index) => {
@@ -72,7 +91,6 @@ function moveLines() {
 function isCollide(car, enemyCar) {
     carRect = car.getBoundingClientRect();
     enemyCarRect = enemyCar.getBoundingClientRect();
-
     return !(
         carRect.top > enemyCarRect.bottom ||
         carRect.left > enemyCarRect.right ||
@@ -87,7 +105,6 @@ function moveEnemyCar(car) {
         if (isCollide(car, enemyCar)) {
             endGame();
         }
-
         if (enemyCar.y >= 750) {
             enemyCar.y = -300;
             enemyCar.style.left = Math.floor(Math.random() * 350) + "px";
@@ -101,11 +118,9 @@ function startGame() {
     score.classList.remove("hide");
     startScreen.classList.add("hide");
     gameArea.innerHTML = "";
-
     player.start = true;
     player.score = 0;
     window.requestAnimationFrame(gamePlay);
-
     for (let i = 0; i < 5; i++) {
         let roadLine = document.createElement("div");
         roadLine.setAttribute("class", "line");
@@ -113,15 +128,11 @@ function startGame() {
         roadLine.style.top = roadLine.y + "px";
         gameArea.appendChild(roadLine);
     }
-
     let car = document.createElement("div");
     car.setAttribute("class", "car");
-
     gameArea.appendChild(car);
-
     player.x = car.offsetLeft;
     player.y = car.offsetTop;
-
     for (let i = 0; i < 3; i++) {
         let enemyCar = document.createElement("div");
         enemyCar.setAttribute("class", "enemyCar");
