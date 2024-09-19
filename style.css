@@ -89,7 +89,7 @@
     .score {
         position: absolute;
         top: 15px;
-        left: 100px;
+        left: 80px;
         justify-content: center;
         align-items: center;
         z-index: 1;
@@ -97,5 +97,8 @@
     }
     .gameArea {
         width: 350px;
+    }
+    .startScreen {
+        width: 40vw;
     }
 }
