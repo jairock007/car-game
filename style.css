@@ -85,4 +85,14 @@
     position: absolute;
     left: calc(50% - 12px);
 }
-
+@media (max-width:500px) {
+    .score {
+        position: absolute;
+        top: 15px;
+        left: 100px;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        opacity: 0.5;
+    }
+}
