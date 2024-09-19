@@ -89,7 +89,7 @@
     .score {
         position: absolute;
         top: 15px;
-        left: 70px;
+        left: 50px;
         justify-content: center;
         align-items: center;
         z-index: 1;
